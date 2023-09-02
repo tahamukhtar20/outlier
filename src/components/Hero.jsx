@@ -22,16 +22,16 @@ export default function Hero() {
 
 
     return (
-        <div className="flex flex-row justify-center items-center h-full w-full">
-            <div className="w-4/5 flex flex-col relative h-full gap-10">
-                <div className="flex flex-row">
+        <div className="flex flex-row justify-between items-center h-full w-full gap-8">
+            <div className="w-fit flex flex-col relative h-full gap-16">
+                <div className="flex flex-row gap-10">
                     <div className="flex w-1/2">
-                        <h1 className="text-9xl max-w-md uppercase flex flex-row flex-wrap gap-8">We<span
+                        <h1 className="text-[8rem] leading-none max-w-md uppercase flex flex-row flex-wrap gap-8">We<span
                             className="flex justify-center items-center"><Gears/></span> Create <Gradient><span
                             className="font-black italic p-2">Future</span></Gradient>
                         </h1>
                     </div>
-                    <div className="flex flex-col text-xl gap-4 leading-loose">
+                    <div className="flex flex-col text-xl gap-4 leading-loose ml-8">
                         <h1 className="italic uppercase text-2xl">Software & Technology</h1>
                         <p className="max-w-[28rem] flex font-light">Disruptive Developers for Disruptive Start-Ups. We
                             make your next Big Move, our Business.</p>
@@ -42,16 +42,16 @@ export default function Hero() {
                         </GradientRoundedButton>
                     </div>
                 </div>
-                <div className="flex -translate-y-1/3 max-w-7xl">
+                <div className="flex -translate-y-1/3 max-w-6xl">
                     <img src={HeroPng} alt="hero-doodle"/>
 
                 </div>
             </div>
-            <div className="flex flex-col gap-8 self-start justify-end items-start h-full w-fit">
+            <div className="flex flex-col gap-8 self-start items-start h-full w-fit">
                 {sideLabelData.map((data, index) => (
                     <SideLabel key={index} {...data}/>
                 ))}
-                <div className="flex justify-center w-full">
+                <div className="flex justify-center w-48">
                     <Stamp/>
                 </div>
             </div>

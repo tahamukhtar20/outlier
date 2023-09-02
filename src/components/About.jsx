@@ -4,9 +4,9 @@ import {Gradient} from "./SharedComponents.jsx";
 export default function About() {
     return (
         <div className="flex flex-row relative min-h-screen">
-            <div className="flex flex-col gap-20">
+            <div className="flex flex-col gap-14">
                 <h1 className="text-[6.5rem]">About beyond <Gradient direction="left"><span
-                    className="font-extrabold">Humans</span></Gradient>
+                    className="font-black">Humans</span></Gradient>
                 </h1>
                 <p className="max-w-3xl text-2xl leading-snug font-sans flex flex-col gap-4">
                     <span>

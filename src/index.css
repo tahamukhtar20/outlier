@@ -2,9 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-Regular.otf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-Medium.otf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-Bold.otf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-Black.otf') format('truetype');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-ExtraBold.otf') format('truetype');
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-Light.otf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-Thin.otf') format('truetype');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-MediumItalic.otf') format('truetype');
+    font-weight: 500;
+}
+
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-BoldItalic.otf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-BlackItalic.otf') format('truetype');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-ExtraBoldItalic.otf') format('truetype');
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-LightItalic.otf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-ThinItalic.otf') format('truetype');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'sans', sans-serif;
+    src: url('./assets/fonts/BwNistaGroteskDEMO-RegularItalic.otf') format('truetype');
+    font-weight: 400;
+}
 
 body {
     @apply text-white bg-black;
+    font-family: 'sans', sans-serif !important;
 }
 
 

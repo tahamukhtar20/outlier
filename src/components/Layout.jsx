@@ -5,7 +5,8 @@ export default function Layout({children}) {
     return (
         <>
             <Header/>
-            <main className="min-h-screen w-full text-white scroll-smooth p-28">
+            <main
+                className="min-h-screen w-full text-white scroll-smooth p-28">
                 {children}
             </main>
             <Footer/>

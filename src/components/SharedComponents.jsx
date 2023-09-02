@@ -1,14 +1,16 @@
-import {ReactComponent as LogoComponent} from "../assets/images/SVG/Logo.svg"
-import {ReactComponent as StampComponent} from "../assets/images/SVG/Stamp.svg"
-import {ReactComponent as UnderLineComponent} from "../assets/images/SVG/Underline.svg"
-import {ReactComponent as GearsComponent} from "../assets/images/SVG/Gears.svg"
-import {ReactComponent as ArrowComponent} from "../assets/images/SVG/Arrow.svg";
+export {ReactComponent as Logo} from "../assets/images/SVG/Logo.svg"
+export {ReactComponent as Stamp} from "../assets/images/SVG/Stamp.svg"
+export {ReactComponent as UnderLine} from "../assets/images/SVG/Underline.svg"
+export {ReactComponent as Gears} from "../assets/images/SVG/Gears.svg"
+export {ReactComponent as Arrow} from "../assets/images/SVG/Arrow.svg";
+export {ReactComponent as Linkedin} from "../assets/images/SVG/Linkedin.svg";
+export {ReactComponent as Twitter} from "../assets/images/SVG/Instagram.svg";
+export {ReactComponent as Instagram} from "../assets/images/SVG/Twitter.svg";
+export {ReactComponent as ResearchAndDevelopment} from "../assets/images/SVG/ResearchAndDevelopment.svg";
+export {ReactComponent as GearAndBrowser} from "../assets/images/SVG/GearAndBrowser.svg";
+export {ReactComponent as HandAndGear} from "../assets/images/SVG/HandAndGear.svg";
+export {ReactComponent as CloudComputing} from "../assets/images/SVG/CloudComputing.svg";
 
-export const Logo = () => <LogoComponent/>
-export const Stamp = () => <StampComponent/>
-export const UnderLine = () => <UnderLineComponent/>
-export const Gears = () => <GearsComponent/>
-export const Arrow = () => <ArrowComponent/>
 export const Gradient = ({children, direction, color}) => (
     <span
         className={`bg-clip-text text-transparent ${direction === "left" ? "bg-gradient-to-l" : "bg-gradient-to-r"} ${color ? color : "from-[#29CCFD] to-[#B228FF]"}`}>

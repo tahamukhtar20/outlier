@@ -16,8 +16,8 @@ export default function Metrics() {
                 <Metric key={index} label={metric.label} value={metric.value} color={metric.color}/>
             ))}
             <img src={ProjectSideGraphics} alt={"Project Side Graphics"}
-                 className="absolute right-0 translate-x-28 -translate-y-[30%]"/>
-            <img src={ProjectBgGrid} alt={"Project Background Grid"} className="absolute -translate-y-[20%]"/>
+                 className="absolute right-0 translate-x-28 -translate-y-[30%] z-0"/>
+            <img src={ProjectBgGrid} alt={"Project Background Grid"} className="absolute -translate-y-[20%] z-0"/>
         </div>
     );
 }

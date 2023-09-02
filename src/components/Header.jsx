@@ -6,7 +6,7 @@ export default function Header() {
             <div className="w-32 aspect-square flex justify-center items-center">
                 <Logo/>
             </div>
-            <ul className="flex flex-row gap-14">
+            <ul className="flex flex-row gap-14 text-xl">
                 <li><a href="#about">About</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="#pricing">Pricing</a></li>
