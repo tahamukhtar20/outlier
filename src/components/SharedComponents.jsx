@@ -7,9 +7,12 @@ export {ReactComponent as Linkedin} from "../assets/images/SVG/Linkedin.svg";
 export {ReactComponent as Twitter} from "../assets/images/SVG/Instagram.svg";
 export {ReactComponent as Instagram} from "../assets/images/SVG/Twitter.svg";
 export {ReactComponent as ResearchAndDevelopment} from "../assets/images/SVG/ResearchAndDevelopment.svg";
+export {ReactComponent as Playbutton} from "../assets/images/SVG/Playbutton.svg";
 export {ReactComponent as GearAndBrowser} from "../assets/images/SVG/GearAndBrowser.svg";
 export {ReactComponent as HandAndGear} from "../assets/images/SVG/HandAndGear.svg";
 export {ReactComponent as CloudComputing} from "../assets/images/SVG/CloudComputing.svg";
+export {ReactComponent as Star} from "../assets/images/SVG/Star.svg";
+export {ReactComponent as HalfArrow} from "../assets/images/SVG/HalfArrow.svg";
 
 export const Gradient = ({children, direction, color}) => (
     <span

@@ -6,6 +6,8 @@ import Layout from "./components/Layout.jsx";
 import Metrics from "./components/Metrics.jsx";
 import OurTeam from "./components/OurTeam.jsx";
 import Solution from "./components/Solution.jsx";
+import ProjectSC from "./components/ProjectSC.jsx";
+import OurApproach from "./components/OurApproach.jsx";
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
             <Metrics/>
             <OurTeam/>
             <Solution/>
+            <ProjectSC/>
+            <OurApproach/>
         </Layout>
     )
 }
