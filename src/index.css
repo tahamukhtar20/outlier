@@ -88,8 +88,9 @@
 }
 
 body {
-    @apply text-white bg-black;
+    @apply text-white relative overflow-x-hidden scroll-smooth;
     font-family: 'sans', sans-serif !important;
+    background: #030015;
 }
 
 
