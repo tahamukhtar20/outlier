@@ -1,29 +1,29 @@
-import {Gradient, HalfArrow, Stamp} from "./SharedComponents.jsx";
+import {Briefcase, Gradient, HalfArrow, HalfGear, Shield, Stamp} from "./SharedComponents.jsx";
 import Slab from "./Slab.jsx";
 import ReviewCard from "./ReviewCard.jsx";
-import {motion, useAnimation} from "framer-motion";
+import {AnimatePresence, motion, useAnimation} from "framer-motion";
 import {useInView} from "react-intersection-observer";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 export default function OurApproach() {
     const slabs = [
         {
-            svg: <Stamp/>,
-            title: "lorem ipsum",
+            svg: <Briefcase/>,
+            title: "Experience And Aesthetics",
             description:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+                "Always working in the balance between User Interface, User Experience and Functionality.",
         },
         {
-            svg: <Stamp/>,
-            title: "lorem ipsum",
+            svg: <HalfGear/>,
+            title: "Latest Technologies",
             description:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+                "We always choose the state of the art in terms of tools, so your solutions are future proof.",
         },
         {
-            svg: <Stamp/>,
-            title: "lorem ipsum",
+            svg: <Shield/>,
+            title: "Lean & Transparent Process",
             description:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+                "Our methodologies are based on Agile and Lean, giving you control and visibility, but always moving as fast as possible... and beyond.",
         },
     ];
     const reviews = [
@@ -39,15 +39,104 @@ export default function OurApproach() {
             stars: 5,
             review:
                 "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+            image: "https://picsum.photos/200/400",
+        },
+        {
+            name: "lorem ipsum",
+            stars: 5,
+            review:
+                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+            image: "https://picsum.photos/200/800",
+        },
+        {
+            name: "lorem ipsum",
+            stars: 5,
+            review:
+                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+            image: "https://picsum.photos/200/100",
+        }, {
+            name: "lorem ipsum",
+            stars: 5,
+            review:
+                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+            image: "https://picsum.photos/200/1000",
+        },
+        {
+            name: "lorem ipsum",
+            stars: 5,
+            review:
+                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+            image: "https://picsum.photos/200/900",
+        }, {
+            name: "lorem ipsum",
+            stars: 5,
+            review:
+                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+            image: "https://picsum.photos/200/300",
+        },
+        {
+            name: "lorem ipsum",
+            stars: 5,
+            review:
+                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+            image: "https://picsum.photos/200/300",
+        }, {
+            name: "lorem ipsum",
+            stars: 5,
+            review:
+                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
             image: "https://picsum.photos/200/300",
         },
     ];
 
     const controls = useAnimation();
+    const [currentReview, setCurrentReview] = useState(0);
+    const [direction, setDirection] = useState(1);
     const [ref, inView] = useInView({
         triggerOnce: true,
-        threshold: 0.5,
+        threshold: 0.2,
     });
+
+    const nextReview = () => {
+        if (window.innerWidth >= 1024) {
+            if (currentReview === reviews.length - 2) {
+                setCurrentReview(0);
+            } else if (currentReview === reviews.length - 1) {
+                setCurrentReview((currentReview + 2) % reviews.length);
+            } else {
+                setCurrentReview(currentReview + 1);
+            }
+        } else if (currentReview === reviews.length - 1) {
+            setCurrentReview(0);
+        } else {
+            setCurrentReview(currentReview + 1);
+        }
+        setDirection(1);
+    };
+
+    const prevReview = () => {
+        if (window.innerWidth >= 1024) {
+            if (currentReview === 0) {
+                setCurrentReview(reviews.length - 2);
+            } else if (currentReview === 1) {
+                setCurrentReview(reviews.length - 1);
+            } else {
+                setCurrentReview(currentReview - 1);
+            }
+        } else if (currentReview === 0) {
+            setCurrentReview(reviews.length - 1);
+        } else {
+            setCurrentReview(currentReview - 1);
+        }
+        setDirection(-1);
+    };
+
+    const reviewsDisplayed = () => {
+        if (window.innerWidth >= 1024) {
+            return reviews.slice(currentReview, currentReview + 2);
+        }
+        return reviews.slice(currentReview, currentReview + 1);
+    };
 
     const animateIn = async () => {
         await controls.start({opacity: 1, y: 0, transition: {duration: 1}});
@@ -78,19 +167,41 @@ export default function OurApproach() {
                     return <Slab key={index} {...slab} />;
                 })}
             </div>
-            {/*<div className="pt-28 flex w-full flex-row items-center gap-8 relative">*/}
-            {/*    <button*/}
-            {/*        className="p-4 text-2xl font-semibold rounded-full aspect-square border-2 flex absolute right-0 translate-x-20 rotate-180">*/}
-            {/*        <HalfArrow/>*/}
-            {/*    </button>*/}
-            {/*    {reviews.map((review, index) => {*/}
-            {/*        return <ReviewCard key={index} {...review} />;*/}
-            {/*    })}*/}
-            {/*    <button*/}
-            {/*        className="p-4 text-2xl font-semibold rounded-full aspect-square border-2 flex absolute left-0 -translate-x-20">*/}
-            {/*        <HalfArrow/>*/}
-            {/*    </button>*/}
-            {/*</div>*/}
+            <div className="pt-28 flex w-full flex-row items-center lg:gap-8 md:gap-4 gap-2 relative">
+                <button
+                    type="button"
+                    onClick={prevReview}
+                    className="lg:p-4 md:p-2 p-1 text-2xl font-semibold rounded-full aspect-square border-2 flex absolute lg:left-0 lg:-translate-x-20 top-0 lg:top-auto lg:right-auto right-0 -translate-x-12 mt-8 gradient-background group bg-cover arrow-buttons"
+                >
+                    <HalfArrow/>
+                </button>
+                <div className="flex justify-center items-center gap-8">
+                    {reviewsDisplayed().map((review, index) => {
+                        return (
+                            <AnimatePresence initial={false} custom={currentReview} mode={"wait"}
+                                             key={index}
+                            >
+                                <motion.div
+                                    key={currentReview}
+                                    initial={{opacity: 0, x: direction === 1 ? 100 : -100}}
+                                    animate={{opacity: 1, x: 0}}
+                                    exit={{opacity: 0, x: direction === 1 ? -100 : 100}}
+                                >
+                                    <ReviewCard {...review} />
+                                </motion.div>
+                            </AnimatePresence>
+
+                        );
+                    })}
+                </div>
+                <button
+                    type="button"
+                    onClick={nextReview}
+                    className="lg:p-4 md:p-2 p-1 text-2xl font-semibold rounded-full aspect-square border-2 flex absolute right-0 lg:translate-x-20 rotate-180 top-0 lg:top-auto mt-8 gradient-background group bg-cover arrow-buttons"
+                >
+                    <HalfArrow/>
+                </button>
+            </div>
         </motion.div>
     );
 }

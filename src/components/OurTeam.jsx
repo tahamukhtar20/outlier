@@ -27,6 +27,7 @@ export default function OurTeam() {
             initial={{opacity: 0, y: 100}}
             animate={controls}
             ref={ref}
+            id={"team"}
         >
             <div className="xl:flex hidden flex-col items-center justify-center w-1/2"/>
             <div className="flex flex-col leading-tight xl:w-1/2 w-full lg:text-8xl md:text-6xl text-5xl">

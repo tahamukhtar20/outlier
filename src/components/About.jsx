@@ -23,6 +23,7 @@ export default function About() {
 
     return (
         <motion.div
+            id={"about"}
             className="flex flex-row relative h-fit"
             initial={{opacity: 0, y: 100}}
             animate={controls}

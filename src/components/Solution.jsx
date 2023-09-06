@@ -1,4 +1,4 @@
-import {Gradient, ResearchAndDevelopment} from "./SharedComponents.jsx";
+import {CloudComputing, GearAndBrowser, Gradient, HandAndGear, ResearchAndDevelopment} from "./SharedComponents.jsx";
 import Card from "./Card.jsx";
 import {motion, useAnimation} from "framer-motion";
 import {useInView} from "react-intersection-observer";
@@ -7,31 +7,31 @@ import {useEffect} from "react";
 export default function Solution() {
     const cards = [
         {
-            title: "lorem ipusm",
+            title: "Research And Development",
             logo: <ResearchAndDevelopment/>,
             description:
-                "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "From the idea, we take care of the process until you get a materialized version of it.",
             link: "",
         },
         {
-            title: "lorem ipusm",
-            logo: <ResearchAndDevelopment/>,
+            title: "Software Development",
+            logo: <GearAndBrowser/>,
             description:
-                "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "You need and app? A game? A site?. We've got you covered.",
             link: "",
         },
         {
-            title: "lorem ipusm",
-            logo: <ResearchAndDevelopment/>,
+            title: "IT Management",
+            logo: <HandAndGear/>,
             description:
-                "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "We bring the right people together for your project.",
             link: "",
         },
         {
-            title: "lorem ipusm",
-            logo: <ResearchAndDevelopment/>,
+            title: "Cloud Computing",
+            logo: <CloudComputing/>,
             description:
-                "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Anywhere, anytime. We make our solutions available for you, no limits.",
             link: "",
         },
     ];
@@ -65,7 +65,7 @@ export default function Solution() {
                 </Gradient>{" "}
                 & Focus Area
             </h1>
-            <ul className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-8 w-full pt-10 z-50">
+            <ul className="grid 2xl:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-8 w-full pt-10 z-50">
                 {cards.map((card, index) => (
                     <li
                         key={index}

@@ -110,3 +110,73 @@ body {
 .gradient-border {
     position: relative;
 }
+
+.gradient-border-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    @apply p-0.5 rounded-full;
+    background: gray !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0) !important;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+}
+
+.gradient-border-card {
+    position: relative;
+}
+
+/*hover gradient card*/
+
+.gradient-border-card:hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    @apply p-0.5 rounded-full;
+    background: linear-gradient(45deg, #29CCFD, #B228FF) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0) !important;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+@property --myColor1 {
+    syntax: '<color>';
+    initial-value: rgba(255, 255, 255, 0.1);
+    inherits: false;
+}
+
+@property --myColor2 {
+    syntax: '<color>';
+    initial-value: rgba(255, 255, 255, 0.1);
+    inherits: false;
+}
+
+.gradient-background {
+    background: linear-gradient(var(--myColor1), var(--myColor2));
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transition: --myColor1 0.5s, --myColor2 0.5s;
+}
+
+.gradient-background:hover {
+    --myColor1: #B228FF;
+    --myColor2: #29CCFD;
+}
+
+.arrow-buttons {;
+    border: 1px solid #fff;
+    transition: all 0.5s ease-in-out;
+}
+
+.arrow-buttons:hover {
+    border: 1px solid #030015;
+
+    & svg {
+        & path {
+            fill: #030015;
+        }
+    }
+}

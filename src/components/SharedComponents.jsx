@@ -12,6 +12,9 @@ export {ReactComponent as GearAndBrowser} from "../assets/images/SVG/GearAndBrow
 export {ReactComponent as HandAndGear} from "../assets/images/SVG/HandAndGear.svg";
 export {ReactComponent as CloudComputing} from "../assets/images/SVG/CloudComputing.svg";
 export {ReactComponent as Star} from "../assets/images/SVG/Star.svg";
+export {ReactComponent as Briefcase} from "../assets/images/SVG/Briefcase.svg";
+export {ReactComponent as Shield} from "../assets/images/SVG/Shield.svg";
+export {ReactComponent as HalfGear} from "../assets/images/SVG/HalfGear.svg";
 export {ReactComponent as HalfArrow} from "../assets/images/SVG/HalfArrow.svg";
 
 export const Gradient = ({children, direction, color}) => (
