@@ -4,6 +4,8 @@ import ReviewCard from "./ReviewCard.jsx";
 import {AnimatePresence, motion, useAnimation} from "framer-motion";
 import {useInView} from "react-intersection-observer";
 import {useEffect, useState} from "react";
+import JOHN from "../assets/images/JOHN.png"
+import KATE from "../assets/images/KATE.png"
 
 export default function OurApproach() {
     const slabs = [
@@ -28,64 +30,20 @@ export default function OurApproach() {
     ];
     const reviews = [
         {
-            name: "lorem ipsum",
+            name: "JOHN",
             stars: 5,
             review:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-            image: "https://picsum.photos/200/300",
+                "We were able to go from Lab to product in months, with a team of developers that surpassed our expectation.",
+            image: JOHN,
         },
         {
-            name: "lorem ipsum",
+            name: "KATE",
             stars: 5,
             review:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-            image: "https://picsum.photos/200/400",
-        },
-        {
-            name: "lorem ipsum",
-            stars: 5,
-            review:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-            image: "https://picsum.photos/200/800",
-        },
-        {
-            name: "lorem ipsum",
-            stars: 5,
-            review:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-            image: "https://picsum.photos/200/100",
-        }, {
-            name: "lorem ipsum",
-            stars: 5,
-            review:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-            image: "https://picsum.photos/200/1000",
-        },
-        {
-            name: "lorem ipsum",
-            stars: 5,
-            review:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-            image: "https://picsum.photos/200/900",
-        }, {
-            name: "lorem ipsum",
-            stars: 5,
-            review:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-            image: "https://picsum.photos/200/300",
-        },
-        {
-            name: "lorem ipsum",
-            stars: 5,
-            review:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-            image: "https://picsum.photos/200/300",
-        }, {
-            name: "lorem ipsum",
-            stars: 5,
-            review:
-                "lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-            image: "https://picsum.photos/200/300",
+                "Experimentation without a team was impossible for\n" +
+                "me before I meet this guys. Amazing job being\n" +
+                "flexible!",
+            image: KATE,
         },
     ];
 
