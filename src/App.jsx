@@ -8,19 +8,34 @@ import OurTeam from "./components/OurTeam.jsx";
 import Solution from "./components/Solution.jsx";
 import ProjectSC from "./components/ProjectSC.jsx";
 import OurApproach from "./components/OurApproach.jsx";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import ContactForm from "./components/ContactForm.jsx";
 
 function App() {
 
     return (
-        <Layout>
-            <Hero/>
-            <About/>
-            <Metrics/>
-            <OurTeam/>
-            <Solution/>
-            <ProjectSC/>
-            <OurApproach/>
-        </Layout>
+        <BrowserRouter>
+            <Layout>
+                <Routes>
+                    <Route path="/" element={<>
+                        <Hero/>
+                        <About/>
+                        <Metrics/>
+                        <OurTeam/>
+                        <Solution/>
+                        <ProjectSC/>
+                        <OurApproach/>
+                    </>
+                    }>
+                    </Route>
+                    <Route path={"/contact"} element={
+                        <ContactForm/>
+                    }>
+                    </Route>
+                </Routes>
+            </Layout>
+        </BrowserRouter>
+
     )
 }
 

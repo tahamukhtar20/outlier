@@ -25,7 +25,7 @@ export default function Footer() {
                     <ul className="flex sm:flex-row flex-col lg:gap-6 gap-4">
                         <li><a href="#">Home</a></li>
                         <li><a href="#about">About me</a></li>
-                        <li><a href="#contact">Contact me</a></li>
+                        <li><a href="/contact">Contact me</a></li>
                     </ul>
                     <ul className="flex flex-row gap-5 lg:justify-end justify-start pt-10">
                         {Logos.map((logo, index) => (

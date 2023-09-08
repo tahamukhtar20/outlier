@@ -41,7 +41,7 @@ export default function About() {
                     </Gradient>
                 </motion.h1>
                 <motion.p
-                    className="lg:max-w-3xl lg:text-2xl text-xl p-4 pl-0 leading-snug font-sans flex flex-col gap-4 z-50"
+                    className="lg:max-w-3xl lg:text-2xl text-xl p-4 pl-0 leading-snug flex flex-col gap-4 z-50"
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
                 >

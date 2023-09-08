@@ -7,8 +7,12 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['sans', "sans-serif"],
-            }
+                'sans-regular': ['sans-regular'],
+                'sans-bold': ['sans-bold'],
+                'sans-medium': ['sans-medium'],
+                'sans-light': ['sans-light'],
+                'sans-thin': ['sans-thin'],
+            },
         },
     },
     plugins: [],

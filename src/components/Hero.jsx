@@ -43,7 +43,7 @@ export default function Hero() {
 
     return (
         <motion.div
-            className="flex 2xl:flex-row flex-col justify-between items-center h-full w-full gap-8"
+            className="flex xl:flex-row flex-col justify-between items-center h-full w-full gap-8"
             initial={{opacity: 1, y: 100}}
             animate={controls}
             ref={ref}
@@ -56,7 +56,7 @@ export default function Hero() {
                 >
                     <div className="flex w-1/2">
                         <motion.h1
-                            className="xl:text-[8rem] lg:text-8xl md:text-6xl text-5xl leading-none max-w-md uppercase flex flex-row flex-wrap gap-8 h-fit"
+                            className="xl:text-[6.5rem] lg:text-7xl md:text-6xl text-5xl leading-none max-w-md uppercase flex flex-row flex-wrap gap-8 h-fit"
                             initial={{opacity: 0}}
                             animate={{opacity: 1}}
                         >
@@ -101,7 +101,8 @@ export default function Hero() {
                     <img src={HeroPng} alt="hero-doodle"/>
                 </motion.div>
             </div>
-            <div className="flex flex-col gap-8 self-start items-start h-full w-fit">
+            <div
+                className="flex xl:flex-col sm:flex-row flex-col xl:-mt-0 sm:-mt-24 -mt-12 gap-8 self-start items-start h-full w-fit">
                 {sideLabelData.map((data, index) => (
                     <motion.div
                         key={index}
