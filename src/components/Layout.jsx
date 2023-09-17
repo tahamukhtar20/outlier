@@ -22,7 +22,7 @@ function LightOrbs() {
         return [...Array(window.location.pathname === "/" ? 10 : 2)].map((_, index) => (
             <div
                 key={index}
-                className={`absolute w-1/2 aspect-square rounded-full blur-[28rem] z-[-9999] ${
+                className={`absolute md:block hidden w-1/2 aspect-square rounded-full blur-[28rem] z-[-9999] ${
                     index % 2 !== 0 ? "bg-[#20C7EF]" : "bg-[#B327FF]"
                 }`}
                 style={{

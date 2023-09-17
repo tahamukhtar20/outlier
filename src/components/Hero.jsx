@@ -56,9 +56,11 @@ export default function Hero() {
                         <h1
                             className="xl:text-[6.5rem] lg:text-7xl md:text-6xl text-5xl leading-none max-w-md uppercase flex flex-row flex-wrap gap-8 h-fit"
                         >
+
                             We
                             <span
-                                className="flex justify-center items-center xl:max-h-[8rem] lg:max-h-[6rem] md:max-h-[3.75] max-h-[3rem] w-fit">
+                                className="flex justify-center items-center xl:max-h-[8rem] lg:max-h-[6rem] md:max-h-[3.75] max-h-[3rem]"
+                            >
                                 <Gears/>
                             </span>{" "}
                             Create{" "}
