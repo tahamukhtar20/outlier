@@ -38,15 +38,12 @@ export default function Metrics() {
             ref={ref}
         >
             {metrics.map((metric, index) => (
-                <motion.div
+                <div
                     key={index}
-                    className={`w-full h-full flex justify-center items-center  ${index % 2 !== 0 ? 'lg:translate-y-[15%]' : 'lg:-translate-y-[15%]'} ${index <= 2 ? 'col-span-2' : 'col-span-3'}`}
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    transition={{delay: index * 0.2}}
+                    className={`w-full h-fit  flex justify-center items-center  ${index % 2 !== 0 ? 'lg:translate-y-[15%]' : 'lg:-translate-y-[15%]'} ${index <= 2 ? 'col-span-2' : 'col-span-3'}`}
                 >
                     <Metric label={metric.label} value={metric.value} color={metric.color}/>
-                </motion.div>
+                </div>
             ))}
 
             <img src={ProjectSideGraphics} alt={"Project Side Graphics"}

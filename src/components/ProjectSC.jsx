@@ -40,9 +40,9 @@ export default function ProjectSC() {
                 </p>
             </div>
             <div
-                className="lg:w-3/5 w-full h-full border-2 aspect-[4/3] rounded-3xl lg:p-8 md:p-4 p-2 lg:translate-x-28 lg:rounded-r-none lg:pr-0 lg:border-r-0 ">
+                className="lg:w-3/5 w-full h-fit border-2 aspect-[4/3] rounded-3xl lg:p-8 md:p-4 p-2 lg:translate-x-28 lg:rounded-r-none lg:pr-0 lg:border-r-0 ">
                 <div
-                    className="w-full h-full flex rounded-3xl border-2 lg:p-8 md:p-4 p-2 lg:rounded-r-none lg:pr-0 lg:border-r-0">
+                    className="w-full h-fit flex rounded-3xl border-2 lg:p-8 md:p-4 p-2 lg:rounded-r-none lg:pr-0 lg:border-r-0">
                     <div
                         className="w-full h-full rounded-3xl relative flex justify-center items-center lg:pr-0 aspect-[4/3]"
                         style={{
