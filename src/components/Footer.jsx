@@ -7,7 +7,7 @@ export default function Footer() {
         <Twitter/>,
     ]
     return (
-        <footer className="2xl:px-28 lg:p-10 sm:p-8 p-4 w-full border border-x-0">
+        <footer className="2xl:px-28 lg:p-10 sm:p-8 p-4 w-full border border-x-0" id="footer">
             <div className="flex lg:flex-row flex-col lg:justify-between">
                 <div className="py-4 pb-10">
                     <div className="flex lg:w-36 sm:w-20 w-16 ml-2 aspect-square">
