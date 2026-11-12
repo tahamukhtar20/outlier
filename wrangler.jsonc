@@ -1,0 +1,6 @@
+{
+  "name": "outlier",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "dist", "not_found_handling": "single-page-application" },
+  "routes": [{ "pattern": "outlier.tahamukhtar.com", "custom_domain": true }]
+}

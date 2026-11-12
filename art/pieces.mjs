@@ -68,8 +68,9 @@ export function gearPath(r, teeth, depth = r * 0.18, hole = r * 0.4) {
 /** Three interlocking gears with metallic and gradient faces. */
 export function gears(p) {
   const g = (x, y, r, t, rot, fill) =>
-    `<g transform="translate(${x} ${y}) rotate(${rot})"><path d="${gearPath(r, t)}" fill="${fill}" fill-rule="evenodd" stroke="#0f172a" stroke-width="1.2"/>` +
-    `<circle r="${f(r * 0.62)}" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/></g>`;
+    // The inner group carries no transform, so CSS can turn each gear about its own centre.
+    `<g transform="translate(${x} ${y}) rotate(${rot})"><g class="gear"><path d="${gearPath(r, t)}" fill="${fill}" fill-rule="evenodd" stroke="#0f172a" stroke-width="1.2"/>` +
+    `<circle r="${f(r * 0.62)}" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/></g></g>`;
   return g(0, 0, 46, 12, 0, `url(#${p}brand)`) + g(64, -34, 28, 9, 12, `url(#${p}bolt)`) + g(58, 40, 22, 8, 4, "#e2e8f0");
 }
 

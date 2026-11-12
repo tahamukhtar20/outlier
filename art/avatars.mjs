@@ -6,6 +6,10 @@ const PEOPLE = [
   { name: "backend", skin: "#e0b48f", hair: "#3f2a1d", style: "beard", shirt: "#334155", bg: ["#818cf8", "#a855f7"] },
   { name: "ml", skin: "#d39a74", hair: "#0f172a", style: "hijab", shirt: "#7c3aed", bg: ["#2dd4bf", "#22d3ee"], scarf: "#4c1d95" },
   { name: "qa", skin: "#f5d0b5", hair: "#e5c07b", style: "long", shirt: "#be185d", bg: ["#a855f7", "#ec4899"] },
+  { name: "mobile", skin: "#b07a52", hair: "#2b1d16", style: "short", shirt: "#0f766e", bg: ["#22d3ee", "#2dd4bf"] },
+  { name: "game", skin: "#f0c2a0", hair: "#5b21b6", style: "curly", shirt: "#4338ca", bg: ["#818cf8", "#f472b6"] },
+  { name: "art", skin: "#7a4a30", hair: "#0c0a09", style: "bun", shirt: "#9d174d", bg: ["#f472b6", "#fb923c"] },
+  { name: "devops", skin: "#deae8c", hair: "#57534e", style: "beard", shirt: "#1e3a8a", bg: ["#38bdf8", "#818cf8"], extra: "glasses" },
 ];
 
 function hair(p) {
