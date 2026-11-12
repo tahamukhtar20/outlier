@@ -7,7 +7,7 @@ const defs = (p) => `<defs>
   <filter id="${p}g" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter></defs>`;
 const S = (p) => `stroke="url(#${p}s)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"`;
 const F = (p) => `fill="url(#${p}f)"`;
-const wrap = (p, body) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">${defs(p)}<g filter="url(#${p}g)" opacity=".55">${body}</g>${body}</svg>`;
+const wrap = (p, body) => `<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 96 96" width="96" height="96">${defs(p)}<g filter="url(#${p}g)" opacity=".55">${body}</g>${body}</svg>`;
 
 export const ICONS = {
   briefcase: (p) => wrap(p, `<rect x="12" y="30" width="72" height="50" rx="10" ${F(p)}/><rect x="12" y="30" width="72" height="50" rx="10" ${S(p)}/><path d="M36 30v-8a6 6 0 0 1 6-6h12a6 6 0 0 1 6 6v8M12 50h72M42 50v8h12v-8" ${S(p)}/>`),
@@ -32,7 +32,7 @@ export const ICONS = {
 
 /** A circular stamp with text on a ring and an arrow in the middle; spins in the site. */
 export function stamp(p, text = "START A PROJECT · BUILD YOUR TEAM · ") {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">${defs(p)}
+  return `<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 200 200" width="200" height="200">${defs(p)}
   <path id="${p}ring" d="M100 100 m-72 0 a72 72 0 1 1 144 0 a72 72 0 1 1 -144 0" fill="none"/>
   <circle cx="100" cy="100" r="94" fill="#0b0b12" stroke="url(#${p}s)" stroke-width="2"/>
   <circle cx="100" cy="100" r="50" fill="url(#${p}f)" stroke="url(#${p}s)" stroke-width="1.5"/>
@@ -45,12 +45,12 @@ export function logo(p, { dark = true } = {}) {
   const dot = dark ? "#3b3b52" : "#c7c7d6";
   let s = "";
   for (let y = 0; y < 3; y++) for (let x = 0; x < 3; x++) if (!(x === 2 && y === 0)) s += `<circle cx="${18 + x * 22}" cy="${30 + y * 22}" r="7" fill="${dot}"/>`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">${defs(p)}${s}
+  return `<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 96 96" width="96" height="96">${defs(p)}${s}
   <path d="M62 30 L74 16" stroke="url(#${p}s)" stroke-width="2" stroke-dasharray="2 4" stroke-linecap="round" opacity=".7"/>
   <circle cx="78" cy="14" r="12" fill="url(#${p}s)" filter="url(#${p}g)" opacity=".7"/><circle cx="78" cy="14" r="9" fill="url(#${p}s)"/></svg>`;
 }
 
 /** A short brush-stroke underline for headings. */
 export function underline(p) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 16" width="200" height="16">${defs(p)}<path d="M4 11 C50 4 110 3 196 7" stroke="url(#${p}s)" stroke-width="5" stroke-linecap="round" fill="none"/></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 200 16" width="200" height="16">${defs(p)}<path d="M4 11 C50 4 110 3 196 7" stroke="url(#${p}s)" stroke-width="5" stroke-linecap="round" fill="none"/></svg>`;
 }

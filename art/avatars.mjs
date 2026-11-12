@@ -51,7 +51,7 @@ function hair(p) {
 export function avatar(p, id) {
   const hs = hair(p);
   const covered = p.style === "hijab";
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  return `<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 160 160" width="160" height="160">
   <defs>
     <linearGradient id="${id}bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${p.bg[0]}"/><stop offset="1" stop-color="${p.bg[1]}"/></linearGradient>
     <radialGradient id="${id}face" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity=".08"/></radialGradient>

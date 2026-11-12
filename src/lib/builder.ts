@@ -80,8 +80,10 @@ export type Plan = {
   partTime: number;
   cost: [number, number];
   reasons: string[];
-  /** Shortest schedule that keeps the team at MAX_TEAM or fewer, when the chosen one does not. */
+  /** Shortest schedule that keeps the team at MAX_TEAM or fewer, when the chosen one does not (null if none does). */
   tooTight: number | null;
+  /** True when the team is larger than MAX_TEAM. */
+  tooBig: boolean;
 };
 
 const round1k = (n: number) => Math.round(n / 1000) * 1000;
@@ -89,10 +91,8 @@ const round1k = (n: number) => Math.round(n / 1000) * 1000;
 function efforts(b: Brief): Record<Track, number> {
   const e: Record<Track, number> = { frontend: 0, backend: 0, mobile: 0, game: 0, art: 0, ml: 0 };
   for (const id of [...b.products, ...b.features]) for (const [t, v] of Object.entries(EFFORT[id])) e[t as Track] += v!;
-  // Offline mode only means something on an app.
-  if (b.features.includes("offline") && !b.products.some((p) => p === "mobile" || p === "webapp")) {
-    e.mobile -= EFFORT.offline.mobile ?? 0;
-  }
+  // Offline mode's mobile work only exists when there is a mobile app.
+  if (b.features.includes("offline") && !b.products.includes("mobile")) e.mobile -= EFFORT.offline.mobile ?? 0;
   for (const t of Object.keys(e) as Track[]) e[t] = Math.max(0, e[t] * STAGE_FACTOR[b.stage]);
   return e;
 }
@@ -120,16 +120,16 @@ export function plan(b: Brief): Plan {
   let tooTight: number | null = null;
   if (c.members.length > MAX_TEAM) {
     for (let w = c.weeks + 1; w <= MAX_WEEKS; w++) if (headcount({ ...b, weeks: w }) <= MAX_TEAM) { tooTight = w; break; }
-    tooTight ??= MAX_WEEKS;
   }
-  return { ...c, tooTight };
+  return { ...c, tooTight, tooBig: c.members.length > MAX_TEAM };
 }
 
-function core(b: Brief): Omit<Plan, "tooTight"> {
+function core(b: Brief): Omit<Plan, "tooTight" | "tooBig"> {
   const weeks = Math.min(MAX_WEEKS, Math.max(MIN_WEEKS, Math.round(b.weeks)));
   const discovery = DISCOVERY_WEEKS[b.stage];
   const launch = 2;
-  const buildStart = discovery + 1;
+  // Design overlaps discovery's last week, so the build starts straight after discovery.
+  const buildStart = discovery;
   const buildWeeks = Math.max(3, weeks - buildStart - launch);
   const e = efforts(b);
   const total = Object.values(e).reduce((a, n) => a + n, 0);
@@ -154,14 +154,15 @@ function core(b: Brief): Omit<Plan, "tooTight"> {
     crew.forEach((fte) => add(role, fte, buildWeeks));
     if (crew.length) {
       const fte = crew.reduce((a, n) => a + n, 0);
-      const name = ROLES[role].name.toLowerCase();
-      const label = fte === 0.5 ? `a half-time ${name}` : fte === 1 ? `a ${name}` : `${fte} ${name}s' worth of time`;
+      const name = role === "ml" ? "ML engineer" : ROLES[role].name.toLowerCase();
+      const a = /^[aeiou]|^ML/i.test(name) ? "an" : "a";
+      const label = fte === 0.5 ? `a half-time ${name}` : fte === 1 ? `${a} ${name}` : Number.isInteger(fte) ? `${fte} ${name}s` : `${fte} ${name}s' worth of time`;
       reasons.push(`About ${Math.round(e[t])} engineer-weeks of ${what} over ${buildWeeks} build weeks needs ${label}.`);
     }
   }
   const testWeeks = Math.max(2, Math.round(buildWeeks * 0.45));
   add("qa", total > 25 ? 1 : 0.5, testWeeks + launch);
-  reasons.push(`Testing runs through the last ${testWeeks} weeks of the build and the launch.`);
+  reasons.push(`QA works through the last ${testWeeks} weeks of the build and the ${launch}-week launch.`);
   if (b.features.includes("realtime") || b.stage === "live" || total > 45) {
     add("devops", 0.5, buildWeeks + launch);
     reasons.push(b.stage === "live" ? "A live product needs a platform engineer to keep it running while it changes." : "Real-time features and larger systems need a platform engineer for hosting and monitoring.");
@@ -179,12 +180,13 @@ function core(b: Brief): Omit<Plan, "tooTight"> {
     const start = buildStart + Math.min(buildWeeks - len, Math.round((i / Math.max(1, featureNames.length)) * (buildWeeks - len)));
     phases.push({ id: f.id, name: f.name, start, length: len, kind: "feature" });
   });
-  phases.push({ id: "testing", name: "Testing", start: buildStart + buildWeeks - testWeeks, length: testWeeks + 1, kind: "check" });
+  phases.push({ id: "testing", name: "Testing", start: buildStart + buildWeeks - testWeeks, length: testWeeks, kind: "check" });
   phases.push({ id: "launch", name: "Launch", start: weeks - launch, length: launch, kind: "check" });
 
   const people = members.length;
   // Bigger teams spend more time coordinating: 5% more per person beyond eight.
-  const overhead = 1 + 0.05 * Math.max(0, people - 8);
+  // Capped at 50%: past that the honest answer is "split the work", which the warning says.
+  const overhead = Math.min(1.5, 1 + 0.05 * Math.max(0, people - 8));
   if (overhead > 1) reasons.push(`A team of ${people} spends more time coordinating, which adds ${Math.round((overhead - 1) * 100)}% to the cost.`);
   const raw = members.reduce((sum, m) => sum + ROLES[m.role].rate * m.fte * m.weeks, 0) * overhead;
 

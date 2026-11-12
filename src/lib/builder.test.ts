@@ -49,6 +49,17 @@ test("a live product with less to build is cheaper than starting from an idea", 
   assert.ok(plan({ ...DEFAULT_BRIEF, stage: "live" }).cost[0] < plan({ ...DEFAULT_BRIEF, stage: "idea" }).cost[0]);
 });
 
+test("offline mode on a web app does not add a mobile engineer", () => {
+  assert.ok(!roles({ ...DEFAULT_BRIEF, products: ["webapp"], features: ["offline"] }).includes("mobile"));
+  assert.ok(roles({ ...DEFAULT_BRIEF, products: ["mobile"], features: ["offline"] }).includes("mobile"));
+});
+
+test("reasons read correctly", () => {
+  const r = plan({ ...DEFAULT_BRIEF, features: ["aiFeatures"] }).reasons.join(" ");
+  assert.doesNotMatch(r, /a ml|ml engineer/);
+  assert.doesNotMatch(r, /\d engineers' worth/);
+});
+
 test("member ids are unique and every plan explains itself", () => {
   const p = plan({ ...DEFAULT_BRIEF, weeks: 9 });
   assert.equal(new Set(p.members.map((m) => m.id)).size, p.members.length);

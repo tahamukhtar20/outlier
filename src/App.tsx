@@ -30,8 +30,16 @@ function useIntro() {
     return () => clearTimeout(id);
   }, [on]);
   const skip = () => {
-    document.querySelectorAll(".hero *").forEach((el) => el.getAnimations().forEach((a) => a.finish()));
-    setOn(false);
+    try {
+      // Finish the one-off animations; looping ones (the wings at rest) cannot finish and keep running.
+      document.querySelectorAll(".hero *").forEach((el) =>
+        el.getAnimations().forEach((a) => {
+          if (a.effect?.getComputedTiming().iterations !== Infinity) a.finish();
+        }),
+      );
+    } finally {
+      setOn(false);
+    }
   };
   return { on, skip };
 }
